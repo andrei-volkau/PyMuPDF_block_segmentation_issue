@@ -3,9 +3,10 @@ import pprint
 
 
 if __name__ == '__main__':
-    filename = 'sample_page.pdf'
+    filename = 'sample_pdf__not_working.pdf'
     doc = fitz.open(filename)
     for page in doc:
-        blocks = page.getText("dict")
-        with open('blocks.txt', 'w') as blocks_file:
-            blocks_file.write(pprint.pformat(blocks))
+        for b in page.getText("blocks"):
+            print("Block", b[-2])
+            print(b[4])
+            print("-" * 50)
